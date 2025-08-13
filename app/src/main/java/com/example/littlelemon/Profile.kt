@@ -1,4 +1,3 @@
-
 package com.example.littlelemon
 
 import android.content.Context
@@ -27,14 +26,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// Reusing constants for SharedPreferences keys
 const val KEY_FIRST_NAME = "firstName"
 const val KEY_LAST_NAME = "lastName"
 const val KEY_EMAIL = "email"
 
-
 @Composable
-fun Profile(onLogout: () -> Unit) { // Profile now accepts the onLogout callback
+fun Profile(onLogout: () -> Unit) {
     val context = LocalContext.current
     val sharedPrefs: SharedPreferences = context.getSharedPreferences(PREF_FILE_KEY, Context.MODE_PRIVATE)
 
@@ -45,9 +42,8 @@ fun Profile(onLogout: () -> Unit) { // Profile now accepts the onLogout callback
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White) // Overall screen background
+            .background(Color.White)
     ) {
-        // Header Section
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -66,7 +62,6 @@ fun Profile(onLogout: () -> Unit) { // Profile now accepts the onLogout callback
             )
         }
 
-        // Profile Information Section
         Text(
             text = "Profile information:",
             modifier = Modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp),
@@ -100,30 +95,28 @@ fun Profile(onLogout: () -> Unit) { // Profile now accepts the onLogout callback
             )
         }
 
-        Spacer(modifier = Modifier.weight(1f)) // Pushes the button to the bottom
+        Spacer(modifier = Modifier.weight(1f))
 
-        // Add the Logout Button
         Button(
             onClick = {
-                // Clear all relevant data from shared preferences
                 sharedPrefs.edit().apply {
                     remove(KEY_FIRST_NAME)
                     remove(KEY_LAST_NAME)
                     remove(KEY_EMAIL)
-                    putBoolean(KEY_IS_ONBOARDING_COMPLETE, false) // Mark onboarding as incomplete
-                    apply() // Asynchronously save changes
+                    putBoolean(KEY_IS_ONBOARDING_COMPLETE, false)
+                    apply()
                 }
-                onLogout() // Trigger navigation back to Onboarding
+                onLogout()
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 24.dp), // Padding for the button
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF4CE14)), // Yellow button
-            shape = RoundedCornerShape(8.dp) // Slightly rounded corners
+                .padding(horizontal = 16.dp, vertical = 24.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF4CE14)),
+            shape = RoundedCornerShape(8.dp)
         ) {
             Text(
                 text = "Log out",
-                color = Color(0xFF333333), // Dark text on yellow button
+                color = Color(0xFF333333),
                 fontSize = 16.sp,
                 modifier = Modifier.padding(vertical = 4.dp)
             )
@@ -134,6 +127,5 @@ fun Profile(onLogout: () -> Unit) { // Profile now accepts the onLogout callback
 @Preview(showBackground = true)
 @Composable
 fun PreviewProfile() {
-    // For preview, provide an empty lambda for onLogout
     Profile(onLogout = {})
 }

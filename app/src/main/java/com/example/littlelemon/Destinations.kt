@@ -1,7 +1,4 @@
-//Destinations.kt
 package com.example.littlelemon
-
-
 
 interface Destination {
     val route: String

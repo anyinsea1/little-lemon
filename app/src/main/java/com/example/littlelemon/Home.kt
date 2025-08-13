@@ -122,11 +122,18 @@ fun Home(
                 .weight(1f)
                 .padding(16.dp)
         ) {
+            Text(
+                text = "Menu",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF333333),
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
             MenuItems(menuItems = menuItems)
-
+            }
         }
     }
-}
+
 
 @Preview(showBackground = true)
 @Composable

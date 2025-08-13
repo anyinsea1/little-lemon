@@ -1,19 +1,13 @@
 package com.example.littlelemon
 
-
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
-// These should be in Destinations.kt, but are included here for context
 const val PREF_FILE_KEY = "LittleLemonPrefs"
 const val KEY_IS_ONBOARDING_COMPLETE = "isOnboardingComplete"
 
@@ -21,8 +15,8 @@ const val KEY_IS_ONBOARDING_COMPLETE = "isOnboardingComplete"
 fun MyNavigation(
     navController: NavHostController,
     menuItems: List<MenuItemEntity>,
-    onSearchQueryChange: () -> Unit,
-    searchQuery: String
+    searchQuery: String,
+    onSearchQueryChange: (String) -> Unit
 ) {
     val context = LocalContext.current
     val sharedPrefs: SharedPreferences =
@@ -35,10 +29,6 @@ fun MyNavigation(
         Onboarding.route
     }
 
-    // State for search query is hoisted here
-    var searchQuery by remember { mutableStateOf("") }
-
-    // Filter the menu items based on the search query
     val filteredMenuItems = if (searchQuery.isNotBlank()) {
         menuItems.filter { it.title.contains(searchQuery, ignoreCase = true) }
     } else {
@@ -67,9 +57,7 @@ fun MyNavigation(
                 onNavigateToProfile = { navController.navigate(Profile.route) },
                 menuItems = filteredMenuItems,
                 searchQuery = searchQuery,
-                onSearchQueryChange = { newQuery ->
-                    searchQuery = newQuery
-                }
+                onSearchQueryChange = onSearchQueryChange
             )
         }
 

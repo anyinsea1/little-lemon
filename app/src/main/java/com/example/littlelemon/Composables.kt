@@ -31,15 +31,12 @@ fun MenuItems(menuItems: List<MenuItemEntity>) {
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        menuItems.forEach { item ->
-            item {
-                MenuItemView(item)
-                Spacer(modifier = Modifier.height(8.dp))
-            }
+        items(menuItems) { item ->
+            MenuItemView(item)
+            Spacer(modifier = Modifier.height(8.dp))
         }
     }
 }
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -72,7 +69,6 @@ fun Hero(
     }
 }
 
-
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun MenuItemView(item: MenuItemEntity) {
@@ -80,15 +76,26 @@ fun MenuItemView(item: MenuItemEntity) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .background(Color(0xFFF7F7F7))
     ) {
         Column(
             modifier = Modifier.weight(1f)
         ) {
-            Text(text = item.title, style = MaterialTheme.typography.titleLarge)
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = item.description, style = MaterialTheme.typography.bodyMedium)
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "$${item.price}", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                text = item.title,
+                style = MaterialTheme.typography.titleLarge
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "$${item.price}",
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color(0xFF495E57)
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = item.description,
+                style = MaterialTheme.typography.bodyMedium
+            )
         }
         Spacer(modifier = Modifier.width(16.dp))
         GlideImage(
