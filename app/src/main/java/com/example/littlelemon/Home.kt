@@ -115,21 +115,13 @@ fun Home(
 
             Hero(searchQuery = searchQuery, onSearchQueryChange = onSearchQueryChange)
         }
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .padding(16.dp)
+                .padding(10.dp)
         ) {
-            Text(
-                text = "Menu",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF333333),
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-            MenuItems(menuItems = menuItems)
+            MenuScreen()
             }
         }
     }
