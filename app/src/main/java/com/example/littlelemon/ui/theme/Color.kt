@@ -9,5 +9,8 @@ val orange = Color(0xFFEE9972)
 
 val pink = Color(0xFFFEDABB)
 val cloud = Color(0xFFEDEFEE)
-val white = Color(0xFFFFFFFF)
-val gray = Color()
+val charcoal = Color(0xFF333333)
+
+val gray = Color(0xFF818181)
+
+val lightgray = Color(0xFFD3D3D3)

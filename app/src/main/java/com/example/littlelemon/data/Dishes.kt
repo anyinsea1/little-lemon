@@ -9,6 +9,7 @@ data class Dish(
     val category: String
 )
 
+/*
 val dishes = listOf<Dish>(
     Dish(
         id = 1,
@@ -50,4 +51,12 @@ val dishes = listOf<Dish>(
         imageResId = com.example.littlelemon.R.drawable.bruschetta,
         category = "starters"
     )
+)
+*/
+val dishes = listOf<Dish>(
+    Dish(1, "Greek Salad", "The famous Greek salad of crispy lettuce, peppers, olives, our Chicago.", 12.99, com.example.littlelemon.R.drawable.greeksalad, "starters"),
+    Dish(2, "Lemon Dessert", "A delicious lemon dessert with a tangy flavor, perfect for a sweet finish.", 8.99, com.example.littlelemon.R.drawable.lemondessert, "desserts"),
+    Dish(3, "Grilled Fish", "Freshly grilled fish served with a side of seasonal vegetables.", 15.99, com.example.littlelemon.R.drawable.grilledfish, "mains"),
+    Dish(4, "Pasta", "Classic pasta dish with a rich tomato sauce and herbs.", 10.99, com.example.littlelemon.R.drawable.pasta, "mains"),
+    Dish(5, "Bruschetta", "Oven-baked bruschetta topped with tomatoes, basil, and a drizzle of balsamic glaze.", 6.99, com.example.littlelemon.R.drawable.bruschetta, "starters")
 )

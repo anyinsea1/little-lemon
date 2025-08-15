@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 
@@ -35,6 +36,24 @@ fun MenuItems(menuItems: List<MenuItemEntity>) {
             MenuItemView(item)
             Spacer(modifier = Modifier.height(8.dp))
         }
+    }
+}
+
+@Preview
+@Composable
+fun MenuItemsPreview() {
+    val menuItems = listOf(
+        MenuItemEntity(
+            id = 1,
+            title = "Greek Salad",
+            description = "The famous Greek salad of crispy lettuce, peppers, olives, and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
+            price = 12.99,
+            image = "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/greekSalad.jpg?raw=true",
+            category = "starters"
+        )
+    )
+    MaterialTheme {
+        MenuItems(menuItems = menuItems)
     }
 }
 
@@ -68,6 +87,15 @@ fun Hero(
         )
     }
 }
+
+@Preview
+@Composable
+fun HeroPreview() {
+    MaterialTheme {
+        Hero(searchQuery = "Search", onSearchQueryChange = {})
+    }
+}
+
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -104,5 +132,21 @@ fun MenuItemView(item: MenuItemEntity) {
             modifier = Modifier.size(90.dp),
             contentScale = ContentScale.Crop
         )
+    }
+}
+
+@Preview
+@Composable
+fun MenuItemViewPreview() {
+    val menuItem = MenuItemEntity(
+        id = 1,
+        title = "Greek Salad",
+        description = "The famous Greek salad of crispy lettuce, peppers, olives, and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
+        price = 12.99,
+        image = "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/greekSalad.jpg?raw=true",
+        category = "starters"
+    )
+    MaterialTheme {
+        MenuItemView(item = menuItem)
     }
 }

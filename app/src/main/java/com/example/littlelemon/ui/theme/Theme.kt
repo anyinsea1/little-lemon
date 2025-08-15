@@ -1,6 +1,7 @@
 package com.example.littlelemon.ui.theme
 
 
+import android.R.color.white
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -18,7 +19,7 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = white,
+    primary = gray,
     secondary = cloud,
     tertiary = cloud
 

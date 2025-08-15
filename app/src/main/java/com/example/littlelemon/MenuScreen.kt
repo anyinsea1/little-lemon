@@ -58,11 +58,15 @@ fun MenuScreen() {
 fun MenuCategory(category: String) {
     Button(
         onClick = { /* Handle click */ },
-        colors = ButtonDefaults.buttonColors(containerColor = Color(light)),
-        shape = RoundedCornerShape(8.dp),
-        modifier = Modifier.padding(2.dp)
+        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFD3D3D3)),
+        shape = RoundedCornerShape(40),
+        modifier = Modifier.padding(1.dp)
+
     ) {
-        Text(text = category)
+        Text(
+            text = category,
+            color = Color.Black,
+        )
     }
 }
 
@@ -71,10 +75,6 @@ fun MenuCategory(category: String) {
 fun MenuCategoryPreview() {
     MenuCategory("lunch")
 }
-
-
-
-
 
 @Composable
 fun MenuDish(dish: Dish) {
@@ -99,7 +99,6 @@ fun MenuDish(dish: Dish) {
                     text = "$${dish.price}", color = Color.Gray, fontWeight = FontWeight.Bold
                 )
             }
-
             Image(
                 painter = painterResource(id = dish.imageResId),
                 contentDescription = dish.name,
@@ -122,7 +121,9 @@ fun MenuDishPreview() {
         Dish(
             id = 1,
             name = "Greek Salad",
-            description = "The famous greek salad of crispy lettuce, peppers, olives, our Chicago.",
+            description = "The famous greek salad of " +
+                    "crispy lettuce, peppers, olives," +
+                    "our Chicago,,.",
             price = 12.99,
             imageResId = com.example.littlelemon.R.drawable.greeksalad,
             category = "starters"
